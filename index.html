@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8" />
+      
+        <script  src="https://code.jquery.com/jquery-2.2.3.min.js"
+			  integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="
+			  crossorigin="anonymous"></script>
+      
+    <title>Nerdy star-wars info</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <link rel="stylesheet" href="app.min.css">
+    <style>
+      /* TODO */
+        
+      </script>
+    </style>
+  </head>
+
+  <body>
+    <div class="app-page" data-page="home">
+      <div class="app-topbar">
+        <div class="app-title">Star Wars</div>
+      </div>
+      <div class="app-content">
+        <div class="app-section">
+          <div class="app-button" id="human-button">Human</div>
+            <div class="app-button" id="droid-button">Droid</div>
+            <div class="app-button" id="wookie-button">Wookie</div>
+            <div class="app-button" id="rodian-button">Rodian</div>
+            <div class="app-button" id="hutt-button">Hutt</div>
+            <div class="app-button" id="yoda-button">Yoda's species</div>
+            <div class="app-button" id="tatooine-button">Tatooine</div>
+            <div class="app-button" id="alderaan-button">Alderaan</div>
+            
+        </div>
+          <div class="app-section">
+          <p id="information-field">The info will go here</p>
+              <p id="information-field2">And here</p>
+                <p id="information-field3">...aaaAAAND here.</p>
+          </div>
+      </div>
+    </div>
+
+    
+    <script src="app.min.js"></script>
+      
+    <script>
+      App.controller('home', function (page) {
+        // Kod som ska köras när sidan "home" laddas in
+          $(page).find('#human-button').click(function() {
+
+  var humanUrl = "http://swapi.co/api/species/1/";
+  $.get(humanUrl, function(data, textStatus, jqXHR){
+    
+    var responseBody = data;
+    $(page).find('#information-field').text("Name: " + responseBody.name + ". " + "Classification: " + responseBody.classification +
+    ". " + "Designation: " + responseBody.designation + ". " + "Average height: " + responseBody.average_height + ".");
+    
+    $(page).find('#information-field2').text("Skin colors: " + responseBody.skin_colors + ". " + "Hair colors: " + responseBody.hair_colors + 
+    ". " + "Eye colors: " + responseBody.eye_colors + ". " + "Average lifespan: " + responseBody.average_lifespan + ".");
+    
+    var homeworldUrl = responseBody.homeworld;
+    
+    $.get(homeworldUrl, function(data2, textStatus2, jqXHR2) {
+      
+      var planetName = data2;
+       $('#information-field3').text("Homeworld: " +  planetName.name );
+      
+    });
+ //   $('#information-field3').text("Homeworld: " +  )
+  })
+  
+}); //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+          //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+          
+          $(page).find('#droid-button').click(function() {
+
+  var droidUrl = "http://swapi.co/api/species/2/";
+  
+  $.get(droidUrl, function(data, textStatus, jqXHR){
+  
+        var responseBody = data;
+        $('#information-field').text("Name: " + responseBody.name + ". " + "Classification: " + responseBody.classification +
+    ". " + "Designation: " + responseBody.designation + ". " + "Average height: " + responseBody.average_height + ".");
+    
+        $('#information-field2').text("Skin colors: " + responseBody.skin_colors + ". " + "Hair colors: " + responseBody.hair_colors + 
+    ". " + "Eye colors: " + responseBody.eye_colors + ". " + "Average lifespan: " + responseBody.average_lifespan + ".");
+    
+    $('#information-field3').text("Homeworld: undefined");
+    
+    
+  })
+  
+});     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+          //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+$(page).find('#wookie-button').click(function() {
+
+  var wookieUrl = "http://swapi.co/api/species/3/";
+  
+  $.get(wookieUrl, function(data, textStatus, jqXHR){
+  
+        var responseBody = data;
+        $('#information-field').text("Name: " + responseBody.name + ". " + "Classification: " + responseBody.classification +
+    ". " + "Designation: " + responseBody.designation + ". " + "Average height: " + responseBody.average_height + ".");
+    
+        $('#information-field2').text("Skin colors: " + responseBody.skin_colors + ". " + "Hair colors: " + responseBody.hair_colors + 
+    ". " + "Eye colors: " + responseBody.eye_colors + ". " + "Average lifespan: " + responseBody.average_lifespan + ".");
+    
+    var homeworldUrl = responseBody.homeworld;
+    
+    $.get(homeworldUrl, function(data2, textStatus2, jqXHR2) {
+      
+      var planetName = data2;
+       $('#information-field3').text("Homeworld: " +  planetName.name );
+      
+    });
+    
+  })
+  
+});     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+          //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+$(page).find('#rodian-button').click(function() {
+
+  var rodianUrl = "http://swapi.co/api/species/4/";
+  
+  $.get(rodianUrl, function(data, textStatus, jqXHR){
+  
+        var responseBody = data;
+        $('#information-field').text("Name: " + responseBody.name + ". " + "Classification: " + responseBody.classification +
+    ". " + "Designation: " + responseBody.designation + ". " + "Average height: " + responseBody.average_height + ".");
+    
+        $('#information-field2').text("Skin colors: " + responseBody.skin_colors + ". " + "Hair colors: " + responseBody.hair_colors + 
+    ". " + "Eye colors: " + responseBody.eye_colors + ". " + "Average lifespan: " + responseBody.average_lifespan + ".");
+    
+    var homeworldUrl = responseBody.homeworld;
+    
+    $.get(homeworldUrl, function(data2, textStatus2, jqXHR2) {
+      
+      var planetName = data2;
+       $('#information-field3').text("Homeworld: " +  planetName.name );
+      
+    });
+    
+  })
+  
+});     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+          //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+$(page).find('#hutt-button').click(function() {
+
+  var huttUrl = "http://swapi.co/api/species/5/";
+  
+  $.get(huttUrl, function(data, textStatus, jqXHR){
+  
+        var responseBody = data;
+        $('#information-field').text("Name: " + responseBody.name + ". " + "Classification: " + responseBody.classification +
+    ". " + "Designation: " + responseBody.designation + ". " + "Average height: " + responseBody.average_height + ".");
+    
+        $('#information-field2').text("Skin colors: " + responseBody.skin_colors + ". " + "Hair colors: " + responseBody.hair_colors + 
+    ". " + "Eye colors: " + responseBody.eye_colors + ". " + "Average lifespan: " + responseBody.average_lifespan + ".");
+    
+    var homeworldUrl = responseBody.homeworld;
+    
+    $.get(homeworldUrl, function(data2, textStatus2, jqXHR2) {
+      
+      var planetName = data2;
+       $('#information-field3').text("Homeworld: " +  planetName.name );
+      
+    });
+    
+  })
+  
+});         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+          //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+$(page).find('#yoda-button').click(function() {
+
+  var yodaUrl = "http://swapi.co/api/species/6/";
+  
+  $.get(yodaUrl, function(data, textStatus, jqXHR){
+  
+        var responseBody = data;
+        $('#information-field').text("Name: " + responseBody.name + ". " + "Classification: " + responseBody.classification +
+    ". " + "Designation: " + responseBody.designation + ". " + "Average height: " + responseBody.average_height + ".");
+    
+        $('#information-field2').text("Skin colors: " + responseBody.skin_colors + ". " + "Hair colors: " + responseBody.hair_colors + 
+    ". " + "Eye colors: " + responseBody.eye_colors + ". " + "Average lifespan: " + responseBody.average_lifespan + ".");
+    
+    var homeworldUrl = responseBody.homeworld;
+    
+    $.get(homeworldUrl, function(data2, textStatus2, jqXHR2) {
+      
+      var planetName = data2;
+       $('#information-field3').text("Homeworld: " +  planetName.name );
+      
+    });
+    
+  })
+  
+});         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+          //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+$(page).find('#tatooine-button').click(function() {
+
+  var tatooineUrl = "http://swapi.co/api/planets/1/";
+  
+  $.get(tatooineUrl, function(data, textStatus, jqXHR){
+  
+        var responseBody = data;
+        $('#information-field').text("Name: " + responseBody.name + ". " + "Rotation period: " + responseBody.rotation_period +
+    ". " + "Orbital period: " + responseBody.orbital_period + ". " + "Diameter: " + responseBody.diameter + ".");
+    
+        $('#information-field2').text("Climate: " + responseBody.climate + ". " + "Gravity: " + responseBody.gravity + 
+    ". " + "Terrain: " + responseBody.terrain + ". " + "Surface water: " + responseBody.surface_water + ".");
+    
+    
+     $('#information-field3').text("Famous residents: ");
+    
+     for (var i = 0; i < responseBody.residents.length; i++) {
+    var residentsUrl = responseBody.residents[i];  // obeservera att denna variabel kommer byta
+                                                   // ...värde efter att den använts/ texten "appendats"
+                                                   // ... i "#information-field"
+    
+    
+    $.get(residentsUrl, function(data2, textStatus2, jqXHR2) {
+      
+      var residentNames = data2;
+       $('#information-field3').append(residentNames.name + ", ");
+      
+    });
+    
+     }
+   
+
+    
+  })
+  
+});         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+          //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+$(page).find('#alderaan-button').click(function() {
+
+  var alderaanUrl = "http://swapi.co/api/planets/2/";
+  
+  $.get(alderaanUrl, function(data, textStatus, jqXHR){
+  
+        var responseBody = data;
+        $('#information-field').text("Name: " + responseBody.name + ". " + "Rotation period: " + responseBody.rotation_period +
+    ". " + "Orbital period: " + responseBody.orbital_period + ". " + "Diameter: " + responseBody.diameter + ".");
+    
+        $('#information-field2').text("Climate: " + responseBody.climate + ". " + "Gravity: " + responseBody.gravity + 
+    ". " + "Terrain: " + responseBody.terrain + ". " + "Surface water: " + responseBody.surface_water + ".");
+    
+    
+     $('#information-field3').text("Famous residents: ");
+    
+     for (var i = 0; i < responseBody.residents.length; i++) {
+    var residentsUrl = responseBody.residents[i];  // obeservera att denna variabel kommer byta
+                                                   // ...värde efter att den använts/ texten "appendats"
+                                                   // ... i "#information-field"
+    
+    
+    $.get(residentsUrl, function(data2, textStatus2, jqXHR2) {
+      
+      var residentNames = data2;
+       $('#information-field3').append(residentNames.name + ", ");
+      
+    });
+    
+     }
+   
+
+    
+  })
+  
+});         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+          //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+          
+          
+          
+      });
+
+
+      try {
+        App.restore();
+      } catch (err) {
+        App.load('home');
+      }
+    </script>
+  </body>
+</html>
